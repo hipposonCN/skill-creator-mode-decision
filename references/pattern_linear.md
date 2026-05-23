@@ -1,50 +1,50 @@
-# 模式 1：线性流程
+# Pattern A: Linear Flow
 
-> **适用**: 部署、安装、迁移等有明确步骤的操作  
-> **代表**: vercel-deploy（77行） — 最小但完整的 Skill 模板
+> **For**: Deployment, installation, migration — any operation with clear steps
+> **Model**: vercel-deploy (77 lines) — the smallest yet complete skill template
 
-## 结构模板
+## Structure Template
 
 ```markdown
-# 标题
+# Title
 
-[一句话核心原则 + 安全默认值]
+[One-sentence core principle + safety default]
 
-## Prerequisites（前置条件）
-- [前置条件 1]
-- [前置条件 2]
+## Prerequisites
+- [Precondition 1]
+- [Precondition 2]
 
-## Quick Start（主流程）
-### Step 1: [动作]
+## Quick Start (Main Flow)
+### Step 1: [Action]
 ```bash
-[具体命令]
+[Concrete command]
 ```
 
-### Step 2: [动作]
-[具体指令]
+### Step 2: [Action]
+[Concrete instruction]
 
-### Step 3: [动作]
-[具体指令]
+### Step 3: [Action]
+[Concrete instruction]
 
-## Fallback（降级方案）
-[主流程失败时的 B 计划]
+## Fallback (Degraded Path)
+[Plan B when main flow fails]
 
-## Troubleshooting（故障排除）
+## Troubleshooting
 | Issue | Solution |
 |-------|----------|
-| [问题 1] | [解决方案] |
+| [Problem 1] | [Solution] |
 ```
 
-## 关键技巧
+## Key Techniques
 
-| 技巧 | 示例 | 为什么有效 |
-|------|------|-----------|
-| 安全默认值 | "Always deploy as preview, not production" | 防止 LLM 做出危险操作 |
-| 具体命令 | 每步给出可直接执行的 bash 命令 | LLM 不需要猜测 |
-| 超时提示 | "Use a 10 minute (600000ms) timeout" | 防止 LLM 因超时中断 |
-| 降级方案 | CLI 失败有 Fallback 脚本 | 提供 B 计划 |
-| 负面指令 | "Do not curl the deployed URL to verify" | 明确禁止不该做的事 |
+| Technique | Example | Why It Works |
+|-----------|---------|-------------|
+| Safety default | "Always deploy as preview, not production" | Prevents LLM from making dangerous moves |
+| Concrete commands | Every step gives a copy-paste-able bash command | LLM doesn't have to guess |
+| Timeout hint | "Use a 10 minute (600000ms) timeout" | Prevents LLM from hanging on timeout |
+| Fallback path | CLI failure has a fallback script | Provides Plan B |
+| Negative instruction | "Do not curl the deployed URL to verify" | Explicitly forbids wrong actions |
 
-## 适用判断
+## Decision Rule
 
-如果你的 Skill 可以用"先做 A，再做 B，最后做 C"描述 → 用线性模式。
+If your skill can be described as "First do A, then B, then C" → use Linear Flow.

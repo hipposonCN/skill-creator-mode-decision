@@ -1,6 +1,6 @@
 # Skill Creator — Mode Decision Framework
 
-A compact, opinionated framework for designing effective OpenClaw/Codex Agent Skills. Built from analyzing 7 top-tier production skills and distilling their patterns into a reusable decision tree.
+A compact, opinionated framework for designing effective OpenClaw / Codex / Claude Code Agent Skills. Built from analyzing 7 top-tier production skills and distilling their patterns into a reusable decision tree.
 
 > **Core idea**: Don't write a skill until you've picked the right *pattern* for it. A deployment workflow needs a different cognitive structure than a safety audit.
 
@@ -11,22 +11,22 @@ A compact, opinionated framework for designing effective OpenClaw/Codex Agent Sk
 When you need to create a skill, ask: **What does this skill do?**
 
 ```
-├─ 执行有明确步骤的操作（部署/安装/迁移）
+├─ Execute a step-by-step operation (deploy / install / migrate)
 │  → Pattern A: Linear Flow
 │
-├─ 在大量选项中帮 LLM 选择方向（10+ 分支的知识域）
+├─ Help LLM choose among many options (platform with 10+ branches)
 │  → Pattern B: Decision Tree + Progressive Disclosure
 │
-├─ 反复执行"做→验证→改进"（TDD / 审查 / 评审）
+├─ Repeatedly execute "do → verify → improve" (TDD / review / audit)
 │  → Pattern C: Iterative Loop
 │
-├─ 跨多个 session 持续推进长期项目
+├─ Drive a long-term project across multiple sessions
 │  → Pattern D: Baton Loop (cross-session persistence)
 │
-├─ 跨越多天/周，有阶段划分和 Go/No-Go 决策
+├─ Span days/weeks with stage gates and Go/No-Go decisions
 │  → Pattern E: Multi-Phase + Checkpoints + Skill Orchestration
 │
-└─ 需要控制 LLM "怎么想" 而非 "做什么"（审计 / 深度分析）
+└─ Control HOW the LLM thinks, not WHAT it does (audit / deep analysis)
    → Pattern F: Thinking Framework
 ```
 
@@ -108,7 +108,7 @@ Built from analyzing 7 production-grade skills:
 - `deanpeters/Product-Manager-Skills` — discovery-process (multi-phase)
 - `trailofbits/skills` — audit-context-building (thinking framework)
 
-Article: [工作流的 Skill 怎么写？从7个顶级 Skill 中提炼的模式与最佳实践](https://news.qq.com/rain/a/20260427A01X7500)
+Article: [How to Write Agent Skills — Patterns & Best Practices from 7 Top-Tier Skills](https://news.qq.com/rain/a/20260427A01X7500)
 
 ---
 

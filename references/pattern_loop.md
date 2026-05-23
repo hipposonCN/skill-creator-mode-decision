@@ -1,55 +1,55 @@
-# 模式 3：循环迭代
+# Pattern C: Iterative Loop
 
-> **适用**: TDD、代码审查、设计评审等需要反复执行"做→验证→改进"的场景  
-> **代表**: test-driven-development（371行）
+> **For**: TDD, code review, design review — any "do → verify → improve" cycle
+> **Model**: test-driven-development (371 lines)
 
-## 结构模板
+## Structure Template
 
 ```markdown
-# 标题
+# Title
 
-## The Iron Law（铁律 — 不可违反的核心原则）
-[1-2 句最强硬的原则声明]
+## The Iron Law (Unbreakable Core Principle)
+[1-2 sentences of the strongest, most absolute principle]
 
-## [循环体名称]
-### PHASE A — [动作]
-[具体指令]
+## [Loop Body Name]
+### PHASE A — [Action]
+[Concrete instruction]
 
 ### Verify A
-[验证命令]
+[Verification command]
 
-### PHASE B — [动作]
-[具体指令]
+### PHASE B — [Action]
+[Concrete instruction]
 
 ### Verify B
-[验证命令]
+[Verification command]
 
 ### Repeat
-回到 PHASE A。
+Back to PHASE A.
 
-## Common Rationalizations（借口反驳表）
+## Common Rationalizations (Excuse Rebuttal Table)
 | Excuse | Reality |
 |--------|---------|
-| "[LLM 可能的借口 1]" | [为什么这个借口不成立] |
-| "[借口 2]" | [反驳] |
+| "[LLM likely excuse 1]" | [Why this excuse doesn't hold] |
+| "[Excuse 2]" | [Rebuttal] |
 | ... | ... |
 
-## Verification Checklist（退出条件）
-- [ ] [条件 1]
-- [ ] [条件 2]
+## Verification Checklist (Exit Conditions)
+- [ ] [Condition 1]
+- [ ] [Condition 2]
 - [ ] ...
 ```
 
-## 关键技巧
+## Key Techniques
 
-| 技巧 | 示例 | 为什么有效 |
-|------|------|-----------|
-| 强硬语气 | "Delete it. Start over." | LLM 倾向于"灵活变通"，强硬语气提高遵从率 |
-| Good/Bad 对比 | 用 `<Good>` 和 `<Bad>` 标签包裹代码 | 对比教学效果最好 |
-| 借口反驳表 | 预判 LLM 可能的 12 种偷懒借口并逐一反驳 | 堵死所有逃避路径 |
-| 验证清单 | 8 项 checklist 作为循环退出条件 | 确保质量达标才能结束 |
-| 人类兜底 | "ask your human partner" | 不确定时交给人 |
+| Technique | Example | Why It Works |
+|-----------|---------|-------------|
+| Strong tone | "Delete it. Start over." | LLMs tend to "flex"; strong tone increases compliance |
+| Good/Bad contrast | Wrap examples in `<Good>` and `<Bad>` tags | Contrastive teaching is most effective |
+| Excuse rebuttal table | Preemptively list 12 LLM excuses and rebut each | Blocks every escape path |
+| Verification checklist | 8-item checklist as loop exit condition | Ensures quality before ending |
+| Human fallback | "ask your human partner" | Hands off when uncertain |
 
-## 适用判断
+## Decision Rule
 
-如果你的 Skill 需要 LLM 反复执行"做→验证→改进"的循环 → 用迭代模式。
+If your skill requires the LLM to repeatedly execute a "do → verify → improve" loop → use Iterative Loop.

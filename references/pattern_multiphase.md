@@ -1,57 +1,57 @@
-# 模式 5：多阶段 + 检查点 + Skill 编排
+# Pattern E: Multi-Phase + Checkpoints + Skill Orchestration
 
-> **适用**: 复杂的多周流程，需要在关键节点做 Go/No-Go 决策  
-> **代表**: discovery-process（502行）— 编排 10+ 子 Skill
+> **For**: Complex multi-week flows requiring Go/No-Go decisions at key nodes
+> **Model**: discovery-process (502 lines) — orchestrates 10+ sub-skills
 
-## 结构模板
+## Structure Template
 
 ```markdown
-# 标题
+# Title
 
-## Key Concepts（核心概念 + 反模式）
-[定义关键术语 + 列出常见错误]
+## Key Concepts (Core Concepts + Anti-Patterns)
+[Define key terms + list common mistakes]
 
-## Phase 1: [阶段名称]
-### Activities（调用哪些子 Skill）
-- Skill A → 做什么
-- Skill B → 做什么
+## Phase 1: [Phase Name]
+### Activities (Which sub-skills to invoke)
+- Skill A → what it does
+- Skill B → what it does
 
-### Outputs（阶段产出）
-- [产出 1]
-- [产出 2]
+### Outputs (Phase Deliverables)
+- [Deliverable 1]
+- [Deliverable 2]
 
-### Decision Point 1（检查点）
-**Go/No-Go 条件**:
-- YES → 进入 Phase 2
-- NO → [+X 天/周，重新执行本阶段]
+### Decision Point 1 (Checkpoint)
+**Go/No-Go Conditions**:
+- YES → proceed to Phase 2
+- NO → [+X days/weeks, re-execute this phase]
 
-## Phase 2-6...（重复相同结构）
+## Phase 2-6... (Repeat same structure)
 
-## Complete Workflow（端到端时间线）
+## Complete Workflow (End-to-End Timeline)
 ```
-Phase 1 (X天) → Phase 2 (Y天) → ... → Phase N
+Phase 1 (X days) → Phase 2 (Y days) → ... → Phase N
 ```
 
-## Common Pitfalls（常见陷阱）
-| 陷阱 | 后果 | 避免方式 |
-|------|------|---------|
+## Common Pitfalls
+| Pitfall | Consequence | How to Avoid |
+|---------|-------------|-------------|
 | | | |
 
-## References（引用的子 Skill 列表）
-- `skill-a`: 用途
-- `skill-b`: 用途
+## References (Sub-Skill List)
+- `skill-a`: purpose
+- `skill-b`: purpose
 ```
 
-## 关键技巧
+## Key Techniques
 
-| 技巧 | 示例 | 为什么有效 |
-|------|------|-----------|
-| 统一阶段模板 | 每个 Phase 都有 Activities → Outputs → Decision Point | LLM 快速理解结构 |
-| 决策检查点 | "达到饱和了吗？YES → 下一阶段，NO → +1 周" | 防止盲目推进 |
-| Skill 编排 | 调度 10+ 个子 Skill | 编排器模式，大 Skill 调度小 Skill |
-| 时间影响 | 每个 NO 路径标注 "+2-3 days" | 让用户了解延迟成本 |
-| 交互协议分离 | 引用 `workshop-facilitation` 定义交互方式 | 关注点分离 |
+| Technique | Example | Why It Works |
+|-----------|---------|-------------|
+| Unified phase template | Every Phase has Activities → Outputs → Decision Point | LLM quickly understands the structure |
+| Decision checkpoint | "Saturated? YES → next phase, NO → +1 week" | Prevents blind progress |
+| Skill orchestration | Dispatch 10+ sub-skills | Orchestrator pattern: big skill dispatches small skills |
+| Time impact | Every NO path labeled "+2-3 days" | User understands delay cost |
+| Interaction protocol separation | Reference `workshop-facilitation` for interaction style | Separation of concerns |
 
-## 适用判断
+## Decision Rule
 
-如果你的 Skill 跨越多天/多周，有明确的阶段划分和 Go/No-Go 决策点 → 用多阶段模式。
+If your skill spans days/weeks, has clear phase divisions and Go/No-Go decision points → use Multi-Phase.

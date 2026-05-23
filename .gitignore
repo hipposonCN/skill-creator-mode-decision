@@ -1,0 +1,6 @@
+# OpenClaw workspace files
+*.jsonl
+.env
+node_modules/
+.DS_Store
+*.log

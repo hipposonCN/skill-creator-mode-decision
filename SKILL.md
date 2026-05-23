@@ -1,10 +1,11 @@
 ---
 name: skill-creator
 description: |
-  Create, edit, audit, or restructure AgentSkills. Trigger when user says "写一个skill"、
-  "创建skill"、"帮我设计skill"、"做个技能"、"skill怎么写"、"skill template"、
-  "skill pattern"、"skill模式"。Covers 5+1 design patterns, progressive disclosure,
-  anti-laziness techniques, frontmatter best practices, and YAML validation.
+  Create, edit, audit, or restructure AgentSkills. Trigger when user says
+  "write a skill", "create a skill", "help me design a skill", "skill pattern",
+  "skill template", "skill mode", "skill framework". Covers 5+1 design patterns,
+  progressive disclosure, anti-laziness techniques, frontmatter best practices,
+  and YAML validation.
 ---
 
 # Skill Creator
@@ -21,48 +22,48 @@ Skills are compact triggerable workflows. Metadata is always visible; body loads
 - Move long examples/docs to `references/`; scripts to `scripts/`; templates/media to `assets/`.
 - No extra README/changelog/setup docs unless they are actual task references.
 - Validate YAML frontmatter after edits.
-- **强硬语气 > 模糊建议**。LLM 对"Delete it. Start over."的遵从率远高于"Consider trying..."。
-- **每条指令都要量化**。"最少3个" > "确保足够"。
+- **Strong tone > weak suggestions**. LLMs comply with "Delete it. Start over." far more than "Consider trying...".
+- **Every instruction must be quantified**. "Minimum 3" > "ensure enough".
 
 ---
 
-## 1. Pattern Decision Tree（先选模式，再写内容）
+## 1. Pattern Decision Tree (Pick the mode first, then write)
 
 ```
-你的 Skill 需要做什么？
+What does your skill do?
 
-├─ 执行有明确步骤的操作（部署/安装/迁移）
-│  → 模式 A：线性流程 → 加载 references/pattern_linear.md
+├─ Execute a step-by-step operation (deploy / install / migrate)
+│  → Pattern A: Linear Flow → load references/pattern_linear.md
 │
-├─ 在大量选项中帮 LLM 选方向（平台/产品/知识域10+分支）
-│  → 模式 B：决策树 + 渐进式披露 → 加载 references/pattern_decision_tree.md
+├─ Help LLM choose among many options (10+ branches)
+│  → Pattern B: Decision Tree + Progressive Disclosure → load references/pattern_decision_tree.md
 │
-├─ 反复执行"做→验证→改进"（TDD/审查/评审）
-│  → 模式 C：循环迭代 → 加载 references/pattern_loop.md
+├─ Repeatedly execute "do → verify → improve" (TDD / review / audit)
+│  → Pattern C: Iterative Loop → load references/pattern_loop.md
 │
-├─ 跨多个 session 持续推进长期项目
-│  → 模式 D：接力棒循环 → 加载 references/pattern_baton.md
+├─ Drive a long-term project across multiple sessions
+│  → Pattern D: Baton Loop → load references/pattern_baton.md
 │
-├─ 跨越多天/周，有阶段划分和 Go/No-Go 决策
-│  → 模式 E：多阶段 + 检查点 → 加载 references/pattern_multiphase.md
+├─ Span days/weeks with stage gates and Go/No-Go decisions
+│  → Pattern E: Multi-Phase + Checkpoints → load references/pattern_multiphase.md
 │
-└─ 需要控制 LLM"怎么想"而非"做什么"（审计/深度分析）
-   → 模式 F：思维框架 → 加载 references/pattern_thinking.md
+└─ Control HOW the LLM thinks, not WHAT it does (deep analysis / audit)
+   → Pattern F: Thinking Framework → load references/pattern_thinking.md
 ```
 
-**选中模式后，加载对应参考文件获取模板骨架。**
+**After selecting a pattern, load the matching reference file for the template skeleton.**
 
 ---
 
-## 2. General Writing Techniques（所有模式共用）
+## 2. Universal Writing Techniques (Shared by all patterns)
 
 ### 2.1 Anti-Laziness Weapons
 
 | Weapon | Principle | Example |
 |--------|-----------|---------|
 | **Strong tone** | Imperative > suggestive | `Delete it. Start over.` not `Consider trying...` |
-| **Excuse rebuttal table** | Preempt LLM's self-rationalizations | `| "太复杂" | 复杂不是跳过的理由 |` |
-| **Quantified thresholds** | Hard minimums with numbers | `最少 3 个不变量、5 个假设` |
+| **Excuse rebuttal table** | Preempt LLM self-rationalizations | `\| "Too complex" \| Complexity is not a reason to skip \|` |
+| **Quantified thresholds** | Hard minimums with numbers | `Minimum 3 invariants, 5 assumptions per function` |
 | **Negative instructions** | Explicitly forbid | `Do not curl the deployed URL. Never skip.` |
 
 ### 2.2 Teaching Methods
@@ -84,13 +85,13 @@ Skills are compact triggerable workflows. Metadata is always visible; body loads
 ## 3. 3-Layer Knowledge Architecture
 
 ```
-Layer 1: Frontmatter（~100 tokens）
-  → LLM scans all Skill descriptions, decides whether to load
+Layer 1: Frontmatter (~100 tokens)
+  → LLM scans all skill descriptions, decides whether to load
 
-Layer 2: SKILL.md body（<5K tokens）
+Layer 2: SKILL.md body (<5K tokens)
   → Core instructions, decision tree, workflow steps
 
-Layer 3: references/（on-demand, each <3K tokens）
+Layer 3: references/ (on-demand, each <3K tokens)
   → Detailed docs, examples, checklists. LLM loads with read tool.
 ```
 
@@ -110,7 +111,7 @@ Layer 3: references/（on-demand, each <3K tokens）
 ```yaml
 ---
 name: my-skill              # lowercase-hyphens, unique
-description: |               # ⚠️ MOST CRITICAL — LLM decides load from this
+description: |               # MOST CRITICAL — LLM decides load from this
   [One-liner what it does] + trigger phrases.
   Trigger when user says "deploy my app", "push this live",
   "create a preview deployment".
